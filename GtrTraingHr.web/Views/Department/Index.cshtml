@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Department>
+
+@{
+    ViewData["Title"] = "Department List";
+}
+
+<h1 class="bg-primary text-center">Department List</h1>
+
+<p > 
+    <a asp-action="CreateOrEdit" class="btn btn-primary">Add New</a>
+</p>
+<table class="table table-bordered  table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeptName)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeptName)
+            </td>
+           
+            <td>
+                    <a asp-action="CreateOrEdit" asp-route-id="@item.Id" class="btn btn-success">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a> |
+                    <a class="btn btn-danger" onclick="DeleteFormSubmit('@item.Id')">Delete</a>
+                    <form asp-action="Delete" style="display:none" id="DeleteForm_@item.Id">
+                        <input name="id" value="@item.Id" />
+                    </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section Scripts{
+    <script>
+        function DeleteFormSubmit(id) {
+           var form= $("#DeleteForm_" + id); 
+         
+        var isconfirm= confirm("Are you sure to delete");
+
+            if (isconfirm){
+                form.submit();
+            }
+
+        }
+    </script>
+  
+}

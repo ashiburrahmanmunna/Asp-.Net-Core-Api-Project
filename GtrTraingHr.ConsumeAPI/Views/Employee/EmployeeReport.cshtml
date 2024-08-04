@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewData["Title"] = "Employee Report";
+}
+
+<h1>Employee Report</h1>
+<div class="row">
+<div class="col-6">
+        <label for="desig">Designation</label>
+    <select id="desig" asp-items="@ViewBag.Desig" class="form-control" onchange="GetEmployes()">
+        <option value="">Select Designation</option>
+    </select>
+    </div>
+        <div class="col-6">
+        <label for="Dept">Department</label>
+    <select id="Dept" asp-items="@ViewBag.Dept" class="form-control" onchange="GetEmployes()">
+            <option value="">Select Department</option>
+    </select>
+    </div>
+</div>
+<div class="row mt-5">
+<table id="myTable" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Company Name</th>
+            <th>Department</th>
+            <th>Joining</th>
+            <th>Service Priod</th>
+            <th>Shift</th>
+            <th>Gross</th>
+            <th>Basic</th>
+            <th>House rent</th>
+            <th>Medical</th>
+            <th>Others</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Table body will be populated dynamically -->
+    </tbody>
+</table>
+</div>
+@*<button onclick="GetEmployes()" class="btn btn-success">Get Employee</button>*@
+@section Scripts{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+    <script src="~/lib/datatables.net/jquery.datatables.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script asp-append-version="true">
+        function GetEmployes(){
+           var desig= $("#desig").val();
+            var Dept = $("#Dept").val();
+            $.post("/employee/EmployeeReport?desig=" + desig + "&dept=" + Dept + "", function (data) {
+                PopulateDatatable(data);
+            });
+        }
+        function PopulateDatatable(emplist){
+            var table = $('#myTable').DataTable();
+            table.destroy();
+            table = $('#myTable').DataTable({
+                data: emplist,
+                columns: [
+                    { data: "empName" },
+                    { data: "comName" },
+                    { data: "deptName" },
+                    { data: "dtJoin" },
+                    { data: "servicePeriod" },
+                    { data: "shiftName" },
+                    { data: "gross" },
+                    { data: "basic" },
+                    { data: "hRent" },
+                    { data: "medical" },
+                    { data: "others" },
+                ]
+            });
+        }
+    </script>
+   
+}

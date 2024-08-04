@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GtrTraingHr.web", "GtrTraingHr.web\GtrTraingHr.web.csproj", "{C7387887-CC56-48AC-A6FC-EFDAE5C2F6FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GtrTraingHr.Api", "GtrTraingHr.Api\GtrTraingHr.Api.csproj", "{3FE89855-5FAF-4BD3-8C51-3E10BE39490E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GtrTraingHr.Models", "GtrTraingHr.Models\GtrTraingHr.Models.csproj", "{FEDE93AD-9A4F-4456-B77B-7B8154126CD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GtrTraingHr.Data", "GtrTraingHr.Data\GtrTraingHr.Data.csproj", "{C1EED5AE-C530-4057-A4E6-10A4C60CC9A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GtrTraingHr.ConsumeAPI", "GtrTraingHr.ConsumeAPI\GtrTraingHr.ConsumeAPI.csproj", "{0D38018E-8B42-431E-984B-EA0B240A809E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GtrTraingHr.Services", "GtrTraingHr.Services\GtrTraingHr.Services.csproj", "{7D7C0A6E-197F-44DE-80C7-0145AFFF658C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7387887-CC56-48AC-A6FC-EFDAE5C2F6FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7387887-CC56-48AC-A6FC-EFDAE5C2F6FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7387887-CC56-48AC-A6FC-EFDAE5C2F6FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7387887-CC56-48AC-A6FC-EFDAE5C2F6FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FE89855-5FAF-4BD3-8C51-3E10BE39490E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FE89855-5FAF-4BD3-8C51-3E10BE39490E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FE89855-5FAF-4BD3-8C51-3E10BE39490E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FE89855-5FAF-4BD3-8C51-3E10BE39490E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEDE93AD-9A4F-4456-B77B-7B8154126CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEDE93AD-9A4F-4456-B77B-7B8154126CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEDE93AD-9A4F-4456-B77B-7B8154126CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEDE93AD-9A4F-4456-B77B-7B8154126CD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1EED5AE-C530-4057-A4E6-10A4C60CC9A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1EED5AE-C530-4057-A4E6-10A4C60CC9A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1EED5AE-C530-4057-A4E6-10A4C60CC9A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1EED5AE-C530-4057-A4E6-10A4C60CC9A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D38018E-8B42-431E-984B-EA0B240A809E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D38018E-8B42-431E-984B-EA0B240A809E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D38018E-8B42-431E-984B-EA0B240A809E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D38018E-8B42-431E-984B-EA0B240A809E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D7C0A6E-197F-44DE-80C7-0145AFFF658C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D7C0A6E-197F-44DE-80C7-0145AFFF658C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D7C0A6E-197F-44DE-80C7-0145AFFF658C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D7C0A6E-197F-44DE-80C7-0145AFFF658C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B162124-50D3-459F-A2E9-8BEC84A46C5E}
+	EndGlobalSection
+EndGlobal

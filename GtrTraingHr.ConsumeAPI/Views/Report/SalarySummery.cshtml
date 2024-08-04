@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewData["Title"] = "SalarySummery";
+}
+<h1>Salary Summery</h1>
+<div class="row">
+    <div class="col-4">
+        <label for="Dept">Department</label>
+        <select id="Dept" asp-items="@ViewBag.Dept" class="form-control" onchange="GetSalary()">
+            <option value="">Select Department</option>
+        </select>
+    </div>
+    <div class="col-4">
+        <label for="Month">Month</label>
+        <select id="Month" class="form-control" onchange="GetSalary()">
+            <option value="">Select Month</option>
+            <option value="1">JAN</option>
+            <option value="2">FEB</option>
+            <option value="3">MAR</option>
+            <option value="4">APR</option>
+            <option value="5">MAY</option>
+            <option value="6">JUN</option>
+            <option value="7">JUL</option>
+            <option value="8">AUG</option>
+            <option value="9">SEP</option>
+            <option value="10">OCT</option>
+            <option value="11">NOV</option>
+            <option value="12">DEC</option>
+
+        </select>
+    </div>
+    <div class="col-4">
+        <label for="Year">Year</label>
+        <select id="Year" class="form-control" onchange="GetSalary()">
+            <option value="">Select Year</option>
+            @for(var i = 2001; i <= 2030; i++) {
+            <option value="@i">@i</option>
+  }
+
+
+
+        </select>
+    </div>
+</div>
+<div class="row mt-5">
+    <table id="myTable" class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>DeptName</th>
+                <th>dtYear</th>
+                <th>dtMonth</th>
+                <th>Total_PayableAmount</th>
+                <th>Total_PaidAmount</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table body will be populated dynamically -->
+        </tbody>
+    </table>
+</div>
+@*<button onclick="GetEmployes()" class="btn btn-success">Get Employee</button>*@
+@section Scripts{
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+    <script src="~/lib/datatables.net/jquery.datatables.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script asp-append-version="true">
+        function GetSalary(){
+            var Month = $("#Month").val();
+            var Year = $("#Year").val();
+            var Dept = $("#Dept").val();
+            if (Month =="" ||Year =="" || Dept=="") {
+                return;
+            }
+            $.post("/Report/SalarySummeryreport?dept=" + Dept + "&month=" + Month + "&year=" + Year + "", function (data) {
+               
+                PopulateDatatable(data);
+            });
+        }
+        function PopulateDatatable(emplist) {
+           
+            var table = $('#myTable').DataTable();
+            table.destroy();
+            table = $('#myTable').DataTable({
+                data: emplist,
+                columns: [
+                    { data: "deptName" },
+                    { data: "year" },
+                    { data: "month" },
+                    { data: "total_PayableAmount" }, 
+                    { data: "total_PaidAmount" }
+                                       
+                ]
+            });
+        }
+    </script>
+
+}

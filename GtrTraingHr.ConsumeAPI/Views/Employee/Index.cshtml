@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Employee>
+
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+<h1 class="bg-primary text-center">Employee List</h1>
+
+<p > 
+    <a asp-action="CreateOrEdit" class="btn btn-primary">Add New</a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gross)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Basic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HRent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medical)
+            </th>
+           
+            <th>@Html.DisplayNameFor(model => model.Others)</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gross)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Basic)
+            </td> 
+            <td>
+                @Html.DisplayFor(modelItem => item.HRent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medical)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Others)
+                </td>
+           
+            <td>
+                    <a asp-action="CreateOrEdit" asp-route-id="@item.Id" class="btn btn-success">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a> |
+                    <a class="btn btn-danger" onclick="DeleteFormSubmit('@item.Id')">Delete</a>
+                    <form asp-action="Delete" style="display:none" id="DeleteForm_@item.Id">
+                        <input name="id" value="@item.Id" />
+                    </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section Scripts{
+    <script>
+        function DeleteFormSubmit(id) {
+           var form= $("#DeleteForm_" + id); 
+         
+        var isconfirm= confirm("Are you sure to delete");
+
+            if (isconfirm){
+                form.submit();
+            }
+
+        }
+    </script>
+  
+}

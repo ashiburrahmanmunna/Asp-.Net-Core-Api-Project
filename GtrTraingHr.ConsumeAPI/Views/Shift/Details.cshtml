@@ -1,0 +1,43 @@
+﻿@model Shift
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<div>
+    <h4 class="bg-info text-center">Shift Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ShiftName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ShiftName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ShiftIn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ShiftIn)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ShiftOut)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ShiftOut)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ShiftLate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ShiftLate)
+        </dd>
+      
+    </dl>
+</div>
+<div>
+    <a asp-action="CreateOrEdit" asp-route-id="@Model?.Id" class="btn btn-success">Edit</a> |
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>

@@ -1,0 +1,21 @@
+﻿@model List<Company>
+@{
+    ViewData["Title"] = "Home Page";
+   
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to GTR traning Project</h1>
+    <h4> Select Your Company</h4>
+
+    @foreach (var item in Model)
+    {
+        <a asp-action="SetCompany" asp-controller="Home" asp-route-Compid="@item.Id" class="btn btn-outline-info w-25" >
+            <span style="text-transform:uppercase">@item.ComName</span>
+            </a>
+
+        <br />
+
+        <br />
+    }
+</div>

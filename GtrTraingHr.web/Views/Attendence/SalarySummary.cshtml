@@ -1,0 +1,137 @@
+﻿@model IEnumerable<Salary>
+@{
+    ViewData["Title"] = "SalarySummary";
+}
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<h1 class="text-center">Salary Summary</h1>
+
+
+<form asp-action="SalarySummary" asp-controller="Attendence" method="get">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+
+
+            <div class="input-group">
+            <input type="date" name="dateTime" class="form-control" />
+       
+            <button type="submit" class="btn btn-primary">Salary</button>
+
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Emp)
+            </th>
+            <th>
+                Month
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Gross)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Basic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HRent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medical)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AbsentAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayableAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaidAmount)
+            </th>
+            <th>Ispaid</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Emp.EmpName)
+                </td>
+                <td>
+                    @(new DateTime(item.dtYear, item.dtMonth, 1).ToString("MMM-yyyy"))
+                </td>
+                @*    <td>
+            @Html.DisplayFor(modelItem => item.dtYear)
+            </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gross)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Basic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HRent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medical)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AbsentAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PayableAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaidAmount)
+                </td>
+                <td>
+                    @if (@item.IsPaid == true)
+                    {
+                        <a asp-action="SalaryPaid" asp-route-empId="@item.EmpId" asp-route-dtMonth="@item.dtMonth" asp-route-dtYear="@item.dtYear" asp-controller="Attendence" class="btn-secondary btn disabled">Paid</a>
+                    }
+                    else
+                    {
+                        <a asp-action="SalaryPaid" asp-route-empId="@item.EmpId" asp-route-dtMonth="@item.dtMonth" asp-route-dtYear="@item.dtYear" asp-controller="Attendence" class="btn-success btn">Pay</a>
+
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@*@section Scripts{
+ 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            var currentDate = new Date();
+
+            // Format the date as MM yy
+            var yearMonth = $.datepicker.formatDate('yy MM', currentDate);
+            // Set the value of the input field
+            $('#dateTime').val(yearMonth);
+
+            $("#dateTime").datepicker({
+                dateFormat: 'yy MM',
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                onClose: function (dateText, inst) {
+                    var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    $(this).datepicker('setDate', new Date(year, month, 1));
+                }
+            });
+        });
+    </script>
+
+}*@

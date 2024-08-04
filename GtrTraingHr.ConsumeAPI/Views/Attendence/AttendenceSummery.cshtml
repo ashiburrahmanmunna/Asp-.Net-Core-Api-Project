@@ -1,0 +1,80 @@
+﻿@model IEnumerable<AttendanceSummary>
+
+@{
+    ViewData["Title"] = "AttendenceSummery";
+}
+
+
+<form asp-action="AttendenceSummery" asp-controller="Attendence" method="get" class="mb-3">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+
+        
+   <div class="input-group">
+
+        <input type="date" name="dateTime" class="form-control" value="@DateTime.Now" />
+        <button type="submit" class="btn btn-primary">Process Attendence And Salary</button>
+   </div>
+   </div>
+   </div>
+    
+</form>
+
+<h2 class="text-center">Attendances Summery</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.dtYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dtMonth)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.EmpId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Present)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Absent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Late)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weekend)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.dtYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dtMonth)
+            </td>           
+            <td>
+                @Html.DisplayFor(modelItem => item.Emp.EmpName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Present)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Absent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Late)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weekend)
+            </td>
+          
+        </tr>
+}
+    </tbody>
+</table>

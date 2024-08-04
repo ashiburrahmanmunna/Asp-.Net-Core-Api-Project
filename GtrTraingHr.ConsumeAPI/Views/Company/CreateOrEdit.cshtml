@@ -1,0 +1,56 @@
+﻿@model Company
+
+@{
+    ViewData["Title"] = "CreateOrEdit";
+
+}
+
+<h1 class="text-center">Add Or Update</h1>
+
+<hr />
+<div class="row">
+
+    <div class="col-md-4 offset-md-4">
+        <form asp-action="CreateOrEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="ComName" class="control-label"></label>
+                <input asp-for="ComName" class="form-control" />
+                <span asp-validation-for="ComName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Basic" class="control-label"></label>
+                <input asp-for="Basic" class="form-control"/>
+                <span style="font-size:smaller"s>This Amount auto calculated by %; EX-if you input 50 its should be 50%</span>
+                <span asp-validation-for="Basic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HRent" class="control-label"></label>
+                <input asp-for="HRent" class="form-control" />
+                <span style="font-size:smaller">This Amount auto calculated by %; EX-if you input 50 its should be 50%</span>
+                <span asp-validation-for="HRent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medical" class="control-label"></label>
+                <input asp-for="Medical" class="form-control" />
+                <span style="font-size:smaller">This Amount auto calculated by %; EX-if you input 50 its should be 50%</span>
+                <span asp-validation-for="Medical" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsInactive" /> @Html.DisplayNameFor(model => model.IsInactive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-info">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
